@@ -1,0 +1,104 @@
+[
+  {
+    "id": "AB",
+    "name": "Alexandra Bennett",
+    "initials": "AB",
+    "color": "violet",
+    "portfolio": [
+      "Guardian Early Learning",
+      "Hirepool",
+      "Coronet",
+      "Jaybro",
+      "Craveable Brands",
+      "StraitNZ",
+      "CFS",
+      "Fisher Funds"
+    ],
+    "sectors": [
+      "childcare",
+      "equipment hire",
+      "NZ commercial RE",
+      "infrastructure consumables",
+      "QSR franchising",
+      "transport & logistics",
+      "wealth management",
+      "funds management"
+    ]
+  },
+  {
+    "id": "BC",
+    "name": "Bella Chan",
+    "initials": "BC",
+    "color": "cyan",
+    "portfolio": [
+      "Visy Properties",
+      "Kinetic",
+      "NewCold",
+      "Icon Cancer Care",
+      "Ritchies",
+      "Worley",
+      "NextDC"
+    ],
+    "sectors": [
+      "industrial property",
+      "bus & transport",
+      "cold storage logistics",
+      "oncology",
+      "NZ fuel retail",
+      "engineering services",
+      "data centres"
+    ]
+  },
+  {
+    "id": "DS",
+    "name": "Dylan Spence",
+    "initials": "DS",
+    "color": "emerald",
+    "portfolio": [
+      "SCT Logistics",
+      "YHA",
+      "ATI",
+      "AirTrunk",
+      "Patties Foods",
+      "ATOM",
+      "Questas"
+    ],
+    "sectors": [
+      "rail freight",
+      "accommodation",
+      "legal tech",
+      "data centres",
+      "FMCG frozen food",
+      "industrial distribution",
+      "hydraulics & fluid power"
+    ]
+  },
+  {
+    "id": "SD",
+    "name": "Sarah Dinh",
+    "initials": "SD",
+    "color": "rose",
+    "portfolio": [
+      "Harris Farm Markets",
+      "ProbeCX",
+      "Iron Mountain",
+      "TEEG",
+      "Arrotex",
+      "Device Technologies",
+      "Velocity",
+      "APM",
+      "DC Co"
+    ],
+    "sectors": [
+      "grocery retail",
+      "BPO",
+      "records management",
+      "leisure & entertainment",
+      "pharmaceuticals",
+      "medical devices",
+      "aviation loyalty",
+      "human services",
+      "NZ data centres"
+    ]
+  }
+]
