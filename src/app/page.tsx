@@ -4,7 +4,6 @@ import { useState, useEffect, useMemo } from 'react'
 import type { MarketFeedData, AnalystSentiment, FilterTab, Article, ArticleCategory } from '@/lib/types'
 import analysts from '@/data/analysts.json'
 import { OvernightBriefing } from '@/components/OvernightBriefing'
-import { PricingGrid } from '@/components/PricingGrid'
 import { SentimentSwimLanes } from '@/components/SentimentSwimLanes'
 import { MetricStrip } from '@/components/MetricStrip'
 import { FilterBar } from '@/components/FilterBar'
@@ -189,15 +188,6 @@ export default function Home() {
         {/* ===== MARKET FEED ===== */}
         {tab === 'market' && (
           <>
-            {marketData?.pricingCells && marketData.pricingCells.length > 0 && (
-              <div>
-                <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-2">
-                  Pricing & Market Colour
-                </h2>
-                <PricingGrid cells={marketData.pricingCells} />
-              </div>
-            )}
-
             <div className="space-y-2">
               {articles.length > 0 && <MetricStrip articles={articles} />}
               <FilterBar active={filter} onChange={setFilter} articles={articles} />

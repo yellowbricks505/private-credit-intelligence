@@ -43,25 +43,17 @@ export async function fetchMarketFeed(date: string): Promise<MarketFeedData> {
 Your role is to curate and synthesise market intelligence for the private credit investment team.
 Always respond with valid JSON matching the exact schema provided. Be specific, factual, and use actual market data.`
 
-  const userPrompt = `Today is ${date} AEST. Search for today's private credit and leveraged finance market news.
+  const userPrompt = `Today is ${date} AEST. Search for private credit and leveraged finance news published in the last 48 hours only. Do NOT include articles older than 2 days. If an article has no clear recent date, skip it.
 
-Search for news from these sources: AFR (Australian Financial Review), SMH (Sydney Morning Herald), Bloomberg, Reuters, Financial Times, Wall Street Journal, Debtwire, LCD/Leveraged Commentary & Data, and major financial news sites.
+Search sources: AFR (Australian Financial Review), SMH (Sydney Morning Herald), Bloomberg, Reuters, Financial Times, Wall Street Journal, Debtwire, LCD, and major financial news sites.
 
-Focus on: Australian private credit, unitranche, direct lending, leveraged loans, real estate credit, infrastructure debt, data centres, structured credit, M&A financing, private equity activity, fund news, macro/rates, RBA updates, sponsor/PE deal activity, sector headwinds, regulatory changes, pricing trends, capital markets.
+Focus ONLY on recent news (last 48 hours) about: Australian private credit, unitranche, direct lending, leveraged loans, real estate credit, infrastructure debt, data centres, structured credit, M&A financing, private equity activity, fund news, macro/rates, RBA updates, sponsor/PE deal activity, sector headwinds, regulatory changes, capital markets.
 
-Also flag any news about these portfolio companies: ${portfolioList}
+Also search for any recent news about these portfolio companies: ${portfolioList}
 
 Return a JSON object with this exact schema:
 {
-  "overnightBriefing": "2-3 sentence summary of the most material stories since yesterday, written for a super fund credit team",
-  "pricingCells": [
-    {"label": "AU Unitranche / Direct Lending", "content": "market colour on Australian unitranche and direct lending spreads, deal flow, pricing trends", "trend": "tighter|wider|stable|mixed"},
-    {"label": "US TLB Market", "content": "US term loan B market colour, technicals, supply/demand", "trend": "tighter|wider|stable|mixed"},
-    {"label": "EU TLB / Leveraged Loans", "content": "European leveraged loan market colour", "trend": "tighter|wider|stable|mixed"},
-    {"label": "AU IG New Issuance", "content": "Australian investment grade new issuance pipeline and pricing", "trend": "tighter|wider|stable|mixed"},
-    {"label": "US HY / IG Spreads", "content": "US high yield and investment grade spread levels and direction", "trend": "tighter|wider|stable|mixed"},
-    {"label": "BBSW & RBA", "content": "BBSW levels, RBA outlook, cash rate expectations", "trend": "tighter|wider|stable|mixed"}
-  ],
+  "overnightBriefing": "2-3 sentence summary of the most material stories from the last 24 hours, written for a super fund credit team",
   "articles": [
     {
       "id": "unique-slug",
@@ -80,9 +72,9 @@ Return a JSON object with this exact schema:
   ]
 }
 
-Include 15-25 articles. AFR and SMH articles should be sourceType "afr" and "smh" respectively. Bloomberg, Reuters, FT, WSJ are "paywalled". Others are "free".
-Mark isWatch=true for RBA decisions, regulatory changes, major sponsor activity, sector-wide headwinds, macro inflection points.
-For portfolioLinks, only include if the article directly mentions a portfolio company name from this list: ${portfolioList}`
+Include 10-20 articles, ALL from the last 48 hours only. AFR articles = sourceType "afr", SMH = "smh", Bloomberg/Reuters/FT/WSJ = "paywalled", others = "free".
+Mark isWatch=true for RBA decisions, regulatory changes, major sponsor activity, sector-wide headwinds.
+For portfolioLinks, only include if the article directly mentions a company from: ${portfolioList}`
 
   const response = await anthropic.messages.create({
     model: 'claude-haiku-4-5',
