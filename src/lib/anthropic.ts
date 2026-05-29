@@ -85,8 +85,8 @@ Mark isWatch=true for RBA decisions, regulatory changes, major sponsor activity,
 For portfolioLinks, only include if the article directly mentions a portfolio company name from this list: ${portfolioList}`
 
   const response = await anthropic.messages.create({
-    model: 'claude-opus-4-5',
-    max_tokens: 8000,
+    model: 'claude-haiku-4-5',
+    max_tokens: 5000,
     tools: [{ type: 'web_search_20250305', name: 'web_search' } as any],
     tool_choice: { type: 'auto' },
     messages: [{ role: 'user', content: userPrompt }],
@@ -187,7 +187,7 @@ Sections:
 Include 10-20 articles total. Prioritise direct portfolio hits. creditRelevanceNote should be specific and actionable.`
 
   const response = await anthropic.messages.create({
-    model: 'claude-opus-4-5',
+    model: 'claude-haiku-4-5',
     max_tokens: 6000,
     tools: [{ type: 'web_search_20250305', name: 'web_search' } as any],
     tool_choice: { type: 'auto' },
@@ -266,7 +266,7 @@ Return JSON:
 }`
 
   const response = await anthropic.messages.create({
-    model: 'claude-opus-4-5',
+    model: 'claude-haiku-4-5',
     max_tokens: 4000,
     tools: [{ type: 'web_search_20250305', name: 'web_search' } as any],
     tool_choice: { type: 'auto' },

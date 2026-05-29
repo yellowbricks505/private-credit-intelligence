@@ -79,21 +79,18 @@ export default function Home() {
     fetchMarket()
   }, [])
 
-  useEffect(() => {
-    async function fetchSentiment() {
-      setLoadingSentiment(true)
-      try {
-        const res = await fetch('/api/sentiment')
-        if (!res.ok) return
-        const data = await res.json()
-        setSentiments(data.sentiments || [])
-      } catch {}
-      finally {
-        setLoadingSentiment(false)
-      }
+  const fetchSentiment = async () => {
+    setLoadingSentiment(true)
+    try {
+      const res = await fetch('/api/sentiment')
+      if (!res.ok) return
+      const data = await res.json()
+      setSentiments(data.sentiments || [])
+    } catch {}
+    finally {
+      setLoadingSentiment(false)
     }
-    fetchSentiment()
-  }, [])
+  }
 
   const articles = useMemo(() => marketData?.articles || [], [marketData])
   const afrArticles = useMemo(() => articles.filter((a) => a.sourceType === 'afr'), [articles])
@@ -174,6 +171,14 @@ export default function Home() {
             <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
               Portfolio Sentiment (30-day rolling)
             </h2>
+            {sentiments.length === 0 && !loadingSentiment && (
+              <button
+                onClick={fetchSentiment}
+                className="text-xs text-blue-500 hover:underline"
+              >
+                Load
+              </button>
+            )}
             {loadingSentiment && (
               <div className="w-3 h-3 border border-slate-400 border-t-transparent rounded-full animate-spin" />
             )}
